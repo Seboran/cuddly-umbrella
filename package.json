@@ -4,9 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "format:check": "prettier --check .",
+    "test": "vitest run"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@vitest/coverage-v8": "^0.34.1",
+    "prettier": "^3.0.1",
+    "typescript": "^5.1.6",
+    "vitest": "^0.34.1"
+  }
 }

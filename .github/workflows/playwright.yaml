@@ -1,17 +1,20 @@
-name: Playwright Tests
+name: My Workflow
+
 on:
   push:
-    branches: [main, master]
-  pull_request:
-    branches: [main, master]
+    branches:
+      - main
+    pull_request:
+      branches:
+        - main
 
 jobs:
-  test:
+  playwright:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -19,14 +22,14 @@ jobs:
       - uses: pnpm/action-setup@v2
         with:
           version: 8
-      
+
       # Cache .pnpm-store
       - name: Cache .pnpm-store
         uses: actions/cache@v3
         with:
           path: /home/runner/setup-pnpm/node_modules/.bin/store/v3
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-      
+
       # Cache Playwright binaries
       - name: Cache Playwright binaries
         uses: actions/cache@v3
@@ -36,11 +39,11 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install dependencies
-        run: pnpm i --frozen-lockfile  --prefer-offline
-      
+        run: pnpm i --frozen-lockfile  --prefer-offline --no-optional
+
       - name: Install playwright deps
         run: npx playwright install --with-deps
-      
+
       - name: Run Playwright tests
         run: pnpm run test:playwright
 

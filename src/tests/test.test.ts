@@ -1,7 +1,7 @@
-import { suite, test, expect } from 'vitest'
+import { suite, test, expect } from "vitest";
 
-suite('test', () => {
-  test('test', () => {
-    expect(1).toBe(1)
-  })
-})
+suite("test", () => {
+  test("test", () => {
+    expect(1).toBe(1);
+  });
+});

@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: "pnpm"
+          cache: 'pnpm'
       # Cache .pnpm-store
       - name: Cache .pnpm-store
         uses: actions/cache@v3
@@ -28,5 +28,5 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
       - name: Install dependencies
         run: pnpm install --frozen-lockfile  --prefer-offline --ignore-scripts
-      - name: "Build"
+      - name: 'Build'
         run: pnpm build

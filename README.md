@@ -4,7 +4,7 @@ Liste d'actions github
 
 ## Qu'est-ce que ça fait ?
 
-Ce repo contient des actions github déjà préconfigurées pour une appli nuxt vitest avec des tests playwright.
+Ce repo contient des actions github déjà préconfigurées pour une appli monorepo avec vitest, playwright et un bout de typescript.
 
 ## Contributions et contact
 

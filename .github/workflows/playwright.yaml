@@ -39,10 +39,13 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
 
       - name: Install dependencies
-        run: pnpm i --frozen-lockfile  --prefer-offline --no-optional
+        run: pnpm i --frozen-lockfile
+
+      - name: Change directory to e2e package
+        run: cd packages/app-e2e
 
       - name: Install playwright deps
-        run: npx playwright install --with-deps
+        run: pnpm exec playwright install
 
       - name: Run Playwright tests
         run: pnpm run test:playwright
